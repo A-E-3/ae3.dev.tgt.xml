@@ -3,7 +3,7 @@
 	title="NDSS::ndns/tunnelDial (Request TCP Tunnel from Device)"
 	baseURI="http://ae3.kimsufi.meloscope.co.nz/!/test/test.xml"
 	>
-	<client geo="SE" ip="90.139.94.153" format="xml" id="ndm-myx"
+	<client geo="SE" ip="90.139.94.153" format="xml" id="xdm-myx"
 		date="2019-05-11T12:52:32.075Z" standalone="false" 
 		develRoot="../skin" webRoot="http://ae3.kimsufi.meloscope.co.nz">
 		<menu src="../other/root-menu-source.html" />

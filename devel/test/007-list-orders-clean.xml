@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="../skin/skin-standard-xml/show.xsl" href2="/!/skin/skin-standard-xml/show.xsl"?>
 <list layout="list" cssId="list"
-	title="NDLS::orders/listOrders (List Orders)"
-	server="ndls.dev.ndm9.xyz" jumpUrl="prepareInitial"
+	title="AASF::orders/listOrders (List Orders)"
+	server="aasf.dev.ndm9.xyz" jumpUrl="prepareInitial"
 	jumpTitle="prepare new order...">
 	<client geo="SE" ip="90.139.57.246" format="clean" id="zxv-myx"
 		date="2019-05-27T17:14:53.558Z" standalone="false"  

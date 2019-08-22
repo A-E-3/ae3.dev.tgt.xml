@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="../skin/skin-standard-xml/show.xsl" href2="/!/skin/skin-standard-xml/show.xsl"?>
+<order title="ASFF::orders/readOrder (View Order State)"
+	jumpUrl="/orders/listOrders" jumpTitle="order list..." layout="form"
+	action="placeOrder"
+	baseURI="http://ae3.kimsufi.meloscope.co.nz/!/test/test.xml"
+	>
+	<fields>
+		<field name="." title="Brand" type="constant" variant="view">
+			<fields>
+				<field name="issuerId" title="Issuer ID" type="constant" />
+				<field name="vendorId" title="Vendor ID" type="constant" />
+				<command icon="zoom" url="../brands/readBrand?key=xdm,keen"
+					title="View Brand" />
+			</fields>
+		</field>
+		<field name="orderId" type="constant" title="Order ID" />
+		<field name="state" title="Order State" type="constant"
+			variant="select">
+			<option value="initial" icon="cart_put"
+				title="Initial (Not Placed, Being Assembled)" />
+			<option value="complete" icon="book_key"
+				title="Complete (Placed, Waiting for Invoice)" />
+			<option value="invoiced" icon="money"
+				title="Invoiced (Waiting for Invoice Approval)" />
+			<option value="approved" icon="thumb_up"
+				title="Approved (Agreed on Price, Waiting for Clearance)" />
+			<option value="working" icon="time"
+				title="Working... (Generating Licenses...)" />
+			<option value="finished" icon="tick" title="Done (Finished)" />
+		</field>
+		<field name="cookieString" title="Cookie String"
+			required="false"
+			hint="Vendor's cookie string is a piece of raw information attached to this particular order by vendor in order to be able to associate this order with one or more of vendor's internal systems." />
+		<field name="items" type="constant" title="Items" variant="list">
+			<columns>
+				<column id="productName" title="Name" disposition="title"
+					variant="link" prefix="../products/readProduct?key="
+					field="productKey" />
+				<column id="orderType" title="Order Type" variant="select">
+					<option value="test" title="Test (Development)" />
+					<option value="beta" title="Beta (Golden Sample)" />
+					<option value="real" title="Real Life (Production)" />
+					<option value="more" title="More Spares (Service)" />
+				</column>
+				<column id="partNumber" title="Part Number" />
+				<column id="ndmHwId" title="HW ID" />
+				<column id="macRanges" titleShort="MACs"
+					title="MAC Addresses" type="boolean" variant="boolean" />
+				<column id="imeiRanges" titleShort="IMEI"
+					title="IMEI Numbers" type="boolean" variant="boolean" />
+				<column id="quantityRequested" title="Request, pcs."
+					type="number" variant="integer" />
+				<column variant="rows">
+					<title>
+						<div>Request Extra, pcs.</div>
+						<div class="hint" style="font-weight: normal">
+							<b>Leave these fields empty</b>
+							unless you want to request a particular overshipment.
+						</div>
+					</title>
+					<rows>
+						<span class="hl-ui-small">
+							Default Overshipment, %:
+							<b>
+								<input name="defaultOvershipment" type="constant"
+									variant="number" default="not set" />
+							</b>
+							;
+						</span>
+						<span class="hl-ui-small">
+							Default Spares Total, pcs.:
+							<b>
+								<input name="defaultTotalOvershipment" type="constant"
+									variant="integer" default="unknown" />
+							</b>
+							.
+						</span>
+						<input name="spareRequested" type="number" variant="integer"
+							required="false">
+							<hint>
+								<b>Leave this field empty</b>
+								unless you want to request a particular overshipment.
+							</hint>
+						</input>
+					</rows>
+				</column>
+				<column variant="rows">
+					<title>
+						<div>Request Amount, $</div>
+						<div class="hint" style="font-weight: normal">
+							<b>Leave these fields empty</b>
+							unless you want to request a particular price.
+						</div>
+					</title>
+					<rows>
+						<span class="hl-ui-small">
+							Default Price, $:
+							<b>
+								<input name="defaultLicensePrice" type="constant"
+									variant="price" default="not set" />
+							</b>
+							;
+						</span>
+						<span class="hl-ui-small">
+							Default Amount, $:
+							<b>
+								<input name="defaultTotalPrice" type="constant"
+									variant="price" default="unknown" />
+							</b>
+							.
+						</span>
+						<input name="priceRequested" type="number" step="0.01"
+							variant="price" required="false">
+							<hint>
+								<b>Leave this field empty</b>
+								unless you want to request a particular price.
+							</hint>
+						</input>
+					</rows>
+				</column>
+				<command title="Change Item" icon="application_form_edit"
+					prefix="prepareInitial?" field="uiItemEditKey"
+					suffix="&amp;uiEdit=true" />
+				<command title="Drop Item" icon="cross"
+					prefix="prepareInitial?" field="uiItemDropKey"
+					suffix="&amp;uiDrop=true" />
+			</columns>
+		</field>
+		<field name="itemCount" title="Order Item Count, pcs."
+			type="number" variant="integer"
+			hint="Confirmation field, enter total number of order items (product*orderType) in this order. The correct answer is: 1." />
+		<field name="totalQuantity" title="Total Requested, pcs."
+			type="number" variant="integer"
+			hint="Confirmation field, enter number of licenses requested in this order, excluding any overshipment. The correct answer is: 2222." />
+		<command icon="basket_edit" title="Add/Update Order Item..."
+			url="prepareInitial?key=xdm,keen;OD1110016" />
+		<submit icon="basket_go" title="Place Order"
+			url="placeOrder?brandId=xdm,keen&amp;orderId=OD1110016" />
+		<command icon="cross" title="Drop Order..."
+			url="dropOrder?back=listOrders&amp;brandId=xdm%2ckeen&amp;orderId=OD1110016" />
+		<help src="/documentation#orders/readOrder" />
+	</fields>
+	<client geo="SE" ip="90.139.193.196" format="xml" id="xdm-myx"
+		date="2019-08-22T09:24:56.667Z" standalone="false">
+		<menu
+			src="/index?__auth=force&amp;__role=context-menu&amp;ref=%2forders%2freadOrder" />
+	</client>
+	<key>xdm,keen;OD1110016</key>
+	<issuerId>xdm</issuerId>
+	<vendorId>keen</vendorId>
+	<brandId>xdm,keen</brandId>
+	<orderId>OD1110016</orderId>
+	<state>initial</state>
+	<cookieString></cookieString>
+	<items>
+		<item key="PN-1010-01RU;PN-1010;real"
+			uiItemEditKey="key=xdm%2ckeen%3bPO1810016&amp;brandId=xdm%2ckeen&amp;orderId=OD1110016&amp;partNumber=PN-1010-01RU&amp;ndmHwId=PN-1010&amp;orderType=real&amp;priceRequested=null&amp;spareRequested=null&amp;quantityRequested=2222"
+			uiItemDropKey="key=xdm%2ckeen%3bPO1810016&amp;brandId=xdm%2ckeen&amp;orderId=OD1110016&amp;partNumber=PN-1010-01RU&amp;ndmHwId=PN-1010&amp;orderType=real&amp;priceRequested=null&amp;spareRequested=null&amp;quantity=0"
+			hl="false" orderType="real" itemKey="PN-1010-01RU;PN-1010;real"
+			productName="Giga" partNumber="PN-1010-01RU" ndmHwId="PN-1010"
+			productKey="xdm,keen;PN-1010-01RU;PN-1010" macRanges="yes"
+			imeiRanges="yes" quantityRequested="2222" quantity="" amount=""
+			unitPrice="" defaultLicensePrice="13.25"
+			defaultTotalPrice="29441.5" defaultOvershipment="1"
+			defaultTotalOvershipment="22"/>
+	</items>
+	<quantity></quantity>
+	<price></price>
+</order>

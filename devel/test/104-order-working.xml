@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="../skin/skin-standard-xml/show.xsl" href2="/!/skin/skin-standard-xml/show.xsl"?>
+<order title="ASFF::orders/readOrder (View Order State)"
+	jumpUrl="/orders/listOrders" jumpTitle="order list..." layout="view"
+	baseURI="http://ae3.kimsufi.meloscope.co.nz/!/test/test.xml"
+	>
+	<fields>
+		<field name="." title="Brand" type="constant" variant="view">
+			<fields>
+				<field name="issuerId" title="Issuer ID" type="constant" />
+				<field name="vendorId" title="Vendor ID" type="constant" />
+				<command icon="zoom" url="../brands/readBrand?key=xdm,mstc"
+					title="View Brand" />
+			</fields>
+		</field>
+		<field name="orderId" type="constant" title="Order ID" />
+		<field name="state" title="Order State" type="constant"
+			variant="select">
+			<option value="initial" icon="cart_put"
+				title="Initial (Not Placed, Being Assembled)" />
+			<option value="complete" icon="book_key"
+				title="Complete (Placed, Waiting for Invoice)" />
+			<option value="invoiced" icon="money"
+				title="Invoiced (Waiting for Invoice Approval)" />
+			<option value="approved" icon="thumb_up"
+				title="Approved (Agreed on Price, Waiting for Clearance)" />
+			<option value="working" icon="time"
+				title="Working... (Generating Licenses...)" />
+			<option value="finished" icon="tick" title="Done (Finished)" />
+		</field>
+		<field name="cookieString" title="Cookie String" type="constant" />
+		<field name="items" type="constant" title="Items" variant="list">
+			<columns>
+				<column id="productName" title="Name" disposition="title"
+					variant="link" prefix="../products/readProduct?key="
+					field="productKey" />
+				<column id="orderType" title="Order Type" variant="select">
+					<option value="test" title="Test (Development)" />
+					<option value="beta" title="Beta (Golden Sample)" />
+					<option value="real" title="Real Life (Production)" />
+					<option value="more" title="More Spares (Service)" />
+				</column>
+				<column id="partNumber" title="Part Number" />
+				<column id="ndmHwId" title="HW ID" />
+				<column id="macRanges" titleShort="MACs"
+					title="MAC Addresses" type="boolean" variant="boolean" />
+				<column id="imeiRanges" titleShort="IMEI"
+					title="IMEI Numbers" type="boolean" variant="boolean" />
+				<column id="quantityRequested" title="Request, pcs."
+					type="number" variant="integer" />
+				<column id="quantity" title="Granted, pcs" type="number"
+					variant="integer" />
+				<column id="unitPrice" title="Price, $" type="number"
+					variant="price" hint="actual (calculated) unit price" />
+				<column id="amount" title="Amount, $" type="number"
+					variant="price" />
+			</columns>
+		</field>
+		<field name="quantity" title="Total Quantity" variant="integer" />
+		<field name="price" title="Total Amount, $" variant="price" />
+		<field name="track" type="constant" title="Tracked Activity"
+			variant="list" elementName="event">
+			<columns>
+				<column id="date" title="Date" variant="date" />
+				<column id="command" title="Command" />
+				<column id="byUser" title="User" variant="username" />
+				<column id="byAddress" title="Address" variant="IP" />
+				<column id="byGeo" title="Geo" variant="geo" />
+				<command title="View Action Detail" icon="zoom_in"
+					prefix="../readAction?key=" field="key" />
+			</columns>
+		</field>
+		<help src="/documentation#orders/readOrder" />
+	</fields>
+	<client geo="SE" ip="90.139.193.196" format="xml" id="xdm-myx"
+		date="2019-08-22T09:07:13.740Z" standalone="false">
+		<menu
+			src="/index?__auth=force&amp;__role=context-menu&amp;ref=%2forders%2freadOrder" />
+	</client>
+	<key>xdm,mstc;2017122023</key>
+	<issuerId>xdm</issuerId>
+	<vendorId>mstc</vendorId>
+	<brandId>xdm,mstc</brandId>
+	<orderId>2017122023</orderId>
+	<state>working</state>
+	<cookieString></cookieString>
+	<items>
+		<item key="14300-0637-S;knv_ra;real" hl="false" orderType="real"
+			itemKey="14300-0637-S;knv_ra;real"
+			productName="Metanoia VDSL Gateway" partNumber="14300-0637-S"
+			ndmHwId="knv_ra" productKey="xdm,mstc;14300-0637-S;knv_ra"
+			macRanges="yes" imeiRanges="no" quantityRequested="200"
+			quantity="200" amount="110" unitPrice="0.55" />
+	</items>
+	<quantity>200</quantity>
+	<price>110</price>
+	<track>
+		<event key="20171219-124111-00000"
+			date="2017-12-19T12:41:11.592Z" command="Orders.acceptApproval"
+			byUser="xdm-myx" byAddress="193.0.174.219" byGeo="RU" />
+		<event key="20171219-123927-00000"
+			date="2017-12-19T12:39:27.825Z" command="Orders.approveInvoice"
+			byUser="xdm-myx" byAddress="193.0.174.219" byGeo="RU" />
+		<event key="20171219-123852-00000"
+			date="2017-12-19T12:38:52.332Z" command="Orders.createInvoice"
+			byUser="xdm-myx" byAddress="193.0.174.219" byGeo="RU" />
+		<event key="20171219-123710-00000"
+			date="2017-12-19T12:37:10.592Z" command="Orders.placeOrder"
+			byUser="xdm-myx" byAddress="193.0.174.219" byGeo="RU" />
+	</track>
+</order>

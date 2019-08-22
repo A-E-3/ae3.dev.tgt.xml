@@ -29,31 +29,31 @@
 	</columns>
 	<item hl="false" id="stable" version="2.15.C.4.0-1" public="true"
 		access="true"
-		cprm="productKey=zxv,sock;KN-7171-01RU;KN-7171&amp;sandbox=stable" />
+		cprm="productKey=zxv,sock;PN-7171-01RU;PN-7171&amp;sandbox=stable" />
 	<item hl="false" id="beta" version="3.00.B.0.0-0" public="true"
 		access="true"
-		cprm="productKey=zxv,sock;KN-7171-01RU;KN-7171&amp;sandbox=beta" />
+		cprm="productKey=zxv,sock;PN-7171-01RU;PN-7171&amp;sandbox=beta" />
 	<item hl="false" id="legacy" version="2.11.D.1.0-0" public="false"
 		access="true"
-		cprm="productKey=zxv,sock;KN-7171-01RU;KN-7171&amp;sandbox=legacy" />
+		cprm="productKey=zxv,sock;PN-7171-01RU;PN-7171&amp;sandbox=legacy" />
 	<item hl="false" id="delta" version="2.15.C.4.0-1" public="false"
 		access="true"
-		cprm="productKey=zxv,sock;KN-7171-01RU;KN-7171&amp;sandbox=delta" />
+		cprm="productKey=zxv,sock;PN-7171-01RU;PN-7171&amp;sandbox=delta" />
 	<item hl="true" id="custom" version="2.15.C.4.0-1-11-23ae859"
 		public="false" access="false"
-		cprm="productKey=zxv,sock;KN-7171-01RU;KN-7171&amp;sandbox=custom" />
+		cprm="productKey=zxv,sock;PN-7171-01RU;PN-7171&amp;sandbox=custom" />
 	<item hl="true" id="gamma" version="2.15.C.4.0-1-12-080befb"
 		public="false" access="false"
-		cprm="productKey=zxv,sock;KN-7171-01RU;KN-7171&amp;sandbox=gamma" />
+		cprm="productKey=zxv,sock;PN-7171-01RU;PN-7171&amp;sandbox=gamma" />
 	<item hl="false" id="draft" version="3.00.B.0.0-0" public="false"
 		access="true"
-		cprm="productKey=zxv,sock;KN-7171-01RU;KN-7171&amp;sandbox=draft" />
+		cprm="productKey=zxv,sock;PN-7171-01RU;PN-7171&amp;sandbox=draft" />
 	<item hl="true" id="alpha" version="3.00.B.0.0-0-39-10654fa"
 		public="false" access="false"
-		cprm="productKey=zxv,sock;KN-7171-01RU;KN-7171&amp;sandbox=alpha" />
+		cprm="productKey=zxv,sock;PN-7171-01RU;PN-7171&amp;sandbox=alpha" />
 	<item hl="true" id="nightly" version="3.01.A.0.0-0-34-ea8bcbd"
 		public="false" access="false"
-		cprm="productKey=zxv,sock;KN-7171-01RU;KN-7171&amp;sandbox=nightly" />
+		cprm="productKey=zxv,sock;PN-7171-01RU;PN-7171&amp;sandbox=nightly" />
 	<command title="Download" titleShort="" icon="images">
 		<group>
 			<command title="Download as XLS" icon="page_white_excel"

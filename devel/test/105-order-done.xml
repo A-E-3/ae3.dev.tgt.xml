@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="../skin/skin-standard-xml/show.xsl" href2="/!/skin/skin-standard-xml/show.xsl"?>
+<order title="ASFF::orders/readOrder (View Order State)"
+	jumpUrl="/orders/listOrders" jumpTitle="order list..." layout="view"
+	baseURI="http://ae3.kimsufi.meloscope.co.nz/!/test/test.xml"
+	>
+	<fields>
+		<field name="." title="Brand" type="constant" variant="view">
+			<fields>
+				<field name="issuerId" title="Issuer ID" type="constant" />
+				<field name="vendorId" title="Vendor ID" type="constant" />
+				<command icon="zoom"
+					url="../brands/readBrand?key=xdm,baudtec" title="View Brand" />
+			</fields>
+		</field>
+		<field name="orderId" type="constant" title="Order ID" />
+		<field name="state" title="Order State" type="constant"
+			variant="select">
+			<option value="initial" icon="cart_put"
+				title="Initial (Not Placed, Being Assembled)" />
+			<option value="complete" icon="book_key"
+				title="Complete (Placed, Waiting for Invoice)" />
+			<option value="invoiced" icon="money"
+				title="Invoiced (Waiting for Invoice Approval)" />
+			<option value="approved" icon="thumb_up"
+				title="Approved (Agreed on Price, Waiting for Clearance)" />
+			<option value="working" icon="time"
+				title="Working... (Generating Licenses...)" />
+			<option value="finished" icon="tick" title="Done (Finished)" />
+		</field>
+		<field name="cookieString" title="Cookie String" type="constant" />
+		<field name="items" type="constant" title="Items" variant="list">
+			<columns>
+				<column id="productName" title="Name" disposition="title"
+					variant="link" prefix="../products/readProduct?key="
+					field="productKey" />
+				<column id="orderType" title="Order Type" variant="select">
+					<option value="test" title="Test (Development)" />
+					<option value="beta" title="Beta (Golden Sample)" />
+					<option value="real" title="Real Life (Production)" />
+					<option value="more" title="More Spares (Service)" />
+				</column>
+				<column id="partNumber" title="Part Number" />
+				<column id="ndmHwId" title="HW ID" />
+				<column id="macRanges" titleShort="MACs"
+					title="MAC Addresses" type="number" variant="integer" />
+				<column id="imeiRanges" titleShort="IMEI"
+					title="IMEI Numbers" type="number" variant="integer" />
+				<column id="quantityRequested" title="Request, pcs."
+					type="number" variant="integer" />
+				<column id="quantity" title="Granted, pcs" type="number"
+					variant="integer" />
+				<column id="unitPrice" title="Price, $" type="number"
+					variant="price" hint="actual (calculated) unit price" />
+				<column id="amount" title="Amount, $" type="number"
+					variant="price" />
+				<command title="Open OrderItem Detail..." icon="zoom_in"
+					prefix="readOrderItem?orderKey=xdm,baudtec;test-PO123&amp;itemKey="
+					field="itemKey" />
+				<command title="Open export file..."
+					icon="application_view_columns" prefix="" field="href" />
+				<command title="Download export file..." icon="disk"
+					prefix="" suffix="&amp;mode=download" field="href" />
+			</columns>
+		</field>
+		<field name="quantity" title="Total Quantity" variant="integer" />
+		<field name="price" title="Total Amount, $" variant="price" />
+		<field name="track" type="constant" title="Tracked Activity"
+			variant="list" elementName="event">
+			<columns>
+				<column id="date" title="Date" variant="date" />
+				<column id="command" title="Command" />
+				<column id="byUser" title="User" variant="username" />
+				<column id="byAddress" title="Address" variant="IP" />
+				<column id="byGeo" title="Geo" variant="geo" />
+				<command title="View Action Detail" icon="zoom_in"
+					prefix="../readAction?key=" field="key" />
+			</columns>
+		</field>
+		<help src="/documentation#orders/readOrder" />
+	</fields>
+	<client geo="SE" ip="90.139.193.196" format="xml" id="xdm-myx"
+		date="2019-08-22T09:06:38.780Z" standalone="false">
+		<menu
+			src="/index?__auth=force&amp;__role=context-menu&amp;ref=%2forders%2freadOrder" />
+	</client>
+	<key>xdm,baudtec;test-PO123</key>
+	<issuerId>xdm</issuerId>
+	<vendorId>baudtec</vendorId>
+	<brandId>xdm,baudtec</brandId>
+	<orderId>test-PO123</orderId>
+	<state>finished</state>
+	<cookieString></cookieString>
+	<items>
+		<item key="14300-0637;knv_rb;test" hl="false" orderType="test"
+			itemKey="14300-0637;knv_rb;test" productName="MN104R4H-2T2R VDSL"
+			partNumber="14300-0637" ndmHwId="knv_rb"
+			productKey="xdm,baudtec;14300-0637;knv_rb" macRanges="0"
+			imeiRanges="0" quantityRequested="5" priceRequested="0" quantity="5"
+			amount="0" unitPrice="0" defaultLicensePrice="0"
+			defaultTotalPrice="0" defaultOvershipment="0"
+			defaultTotalOvershipment="0"
+			href="/export/xdm,baudtec/knv_rb/test-PO123__14300-0637__test__MN104R4H-2T2R_VDSL.txt?ak=jh6ud9852985vz6" />
+	</items>
+	<quantity>5</quantity>
+	<price>0</price>
+	<track>
+		<event key="20130705-043154-00000"
+			date="2013-07-05T04:31:54.617Z" command="acceptApproval"
+			byUser="xdm-alexs" byAddress="114.32.34.180" byGeo="TW" />
+		<event key="20130705-043057-00000"
+			date="2013-07-05T04:30:57.926Z" command="approveInvoice"
+			byUser="baudtec" byAddress="114.32.34.180" byGeo="TW" />
+		<event key="20130705-042942-00000"
+			date="2013-07-05T04:29:42.174Z" command="createInvoice"
+			byUser="xdm-alexs" byAddress="114.32.34.180" byGeo="TW" />
+		<event key="20130705-042723-00000"
+			date="2013-07-05T04:27:23.366Z" command="placeOrder" byUser="baudtec"
+			byAddress="114.32.34.180" byGeo="TW" />
+	</track>
+</order>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="../skin/skin-standard-xml/show.xsl" href2="/!/skin/skin-standard-xml/show.xsl"?>
+<order title="ASFF::orders/readOrder (View Order State)"
+	jumpUrl="/orders/listOrders" jumpTitle="order list..." layout="form"
+	action="createInvoice"
+	baseURI="http://ae3.kimsufi.meloscope.co.nz/!/test/test.xml"
+	>
+	<fields>
+		<field name="." title="Brand" type="constant" variant="view">
+			<fields>
+				<field name="issuerId" title="Issuer ID" type="constant" />
+				<field name="vendorId" title="Vendor ID" type="constant" />
+				<command icon="zoom" url="../brands/readBrand?key=xdm,keen"
+					title="View Brand" />
+			</fields>
+		</field>
+		<field name="orderId" type="constant" title="Order ID" />
+		<field name="state" title="Order State" type="constant"
+			variant="select">
+			<option value="initial" icon="cart_put"
+				title="Initial (Not Placed, Being Assembled)" />
+			<option value="complete" icon="book_key"
+				title="Complete (Placed, Waiting for Invoice)" />
+			<option value="invoiced" icon="money"
+				title="Invoiced (Waiting for Invoice Approval)" />
+			<option value="approved" icon="thumb_up"
+				title="Approved (Agreed on Price, Waiting for Clearance)" />
+			<option value="working" icon="time"
+				title="Working... (Generating Licenses...)" />
+			<option value="finished" icon="tick" title="Done (Finished)" />
+		</field>
+		<field name="cookieString" title="Cookie String" type="constant" />
+		<field name="items" type="constant" title="Items" variant="list">
+			<columns>
+				<column id="productName" title="Name" disposition="title"
+					variant="link" prefix="../products/readProduct?key="
+					field="productKey" />
+				<column id="orderType" title="Order Type" variant="select">
+					<option value="test" title="Test (Development)" />
+					<option value="beta" title="Beta (Golden Sample)" />
+					<option value="real" title="Real Life (Production)" />
+					<option value="more" title="More Spares (Service)" />
+				</column>
+				<column id="partNumber" title="Part Number" />
+				<column id="ndmHwId" title="HW ID" />
+				<column id="macRanges" titleShort="MACs"
+					title="MAC Addresses" type="boolean" variant="boolean" />
+				<column id="imeiRanges" titleShort="IMEI"
+					title="IMEI Numbers" type="boolean" variant="boolean" />
+				<column id="quantityRequested" title="Request, pcs."
+					type="number" variant="integer" />
+				<column title="Grant Total, pcs." variant="rows">
+					<rows>
+						<span class="hl-ui-small">
+							Requested Spares, pcs:
+							<b>
+								<input name="spareRequested" type="constant"
+									variant="integer" default="not specified" />
+							</b>
+							;
+						</span>
+						<span class="hl-ui-small">
+							Default Overshipment, %:
+							<b>
+								<input name="defaultOvershipment" type="constant"
+									variant="number" default="not set" />
+							</b>
+							;
+						</span>
+						<span class="hl-ui-small">
+							Default Spares Total, pcs.:
+							<b>
+								<input name="defaultTotalOvershipment" type="constant"
+									variant="integer" default="unknown" />
+							</b>
+							.
+						</span>
+						<input name="quantity" type="number" step="1" min="0"
+							field="quantityRequested" size="7">
+							<hint>
+								Total quantity
+								<b>including</b>
+								any overshipment!
+							</hint>
+						</input>
+					</rows>
+				</column>
+				<column title="Amount, $" variant="rows">
+					<rows>
+						<span class="hl-ui-small">
+							Requested Amount, $:
+							<b>
+								<input name="priceRequested" type="constant"
+									variant="price" default="not specified" />
+							</b>
+							;
+						</span>
+						<span class="hl-ui-small">
+							Default License Price, $:
+							<b>
+								<input name="defaultLicensePrice" type="constant"
+									variant="price" default="not set" />
+							</b>
+							;
+						</span>
+						<span class="hl-ui-small">
+							Default Amount, $:
+							<b>
+								<input name="defaultTotalPrice" type="constant"
+									variant="price" default="unknown" />
+							</b>
+							.
+						</span>
+						<input name="price" type="number" variant="price"
+							step="0.01" min="0.0" size="7">
+							<hint>Amount for given order item in USD.</hint>
+						</input>
+					</rows>
+				</column>
+			</columns>
+		</field>
+		<field name="totalQuantity" title="Total Quantity, pcs."
+			type="number" variant="integer"
+			hint="Confirmation field, enter total number of licenses granted in this order. Default total count is 2 (2 including overshipment)." />
+		<field name="totalPrice" title="Total Amount, $" type="number"
+			variant="price"
+			hint="Confirmation field, enter total price for this order. Default total amount is 12.04 USD." />
+		<field name="track" type="constant" title="Tracked Activity"
+			variant="list" elementName="event">
+			<columns>
+				<column id="date" title="Date" variant="date" />
+				<column id="command" title="Command" />
+				<column id="byUser" title="User" variant="username" />
+				<column id="byAddress" title="Address" variant="IP" />
+				<column id="byGeo" title="Geo" variant="geo" />
+				<command title="View Action Detail" icon="zoom_in"
+					prefix="../readAction?key=" field="key" />
+			</columns>
+		</field>
+		<submit icon="money" title="Create Invoice"
+			url="createInvoice?brandId=xdm,keen&amp;orderId=OD1110059" />
+		<command icon="cross" title="Drop Order..."
+			url="dropOrder?back=listOrders&amp;brandId=xdm%2ckeen&amp;orderId=OD1110059" />
+		<help src="/documentation#orders/readOrder" />
+	</fields>
+	<client geo="SE" ip="90.139.193.196" format="xml" id="xdm-myx"
+		date="2019-08-22T11:03:19.099Z" standalone="false">
+		<menu
+			src="/index?__auth=force&amp;__role=context-menu&amp;ref=%2forders%2freadOrder" />
+	</client>
+	<key>xdm,keen;OD1110059</key>
+	<issuerId>xdm</issuerId>
+	<vendorId>keen</vendorId>
+	<brandId>xdm,keen</brandId>
+	<orderId>OD1110059</orderId>
+	<state>complete</state>
+	<cookieString></cookieString>
+	<items>
+		<item key="PN-1611-01RU;PN-1611;real" hl="false" orderType="real"
+			itemKey="PN-1611-01RU;PN-1611;real" productName="Air (RU)"
+			partNumber="PN-1611-01RU" ndmHwId="PN-1611"
+			productKey="xdm,keen;PN-1611-01RU;PN-1611" macRanges="yes"
+			imeiRanges="no" quantityRequested="2" quantity="" amount=""
+			unitPrice="NaN" defaultLicensePrice="6.02" defaultTotalPrice="12.04"
+			defaultOvershipment="1" defaultTotalOvershipment="0" />
+	</items>
+	<quantity></quantity>
+	<price></price>
+	<track>
+		<event key="20190822-105350-00000"
+			date="2019-08-22T10:53:50.838Z" command="Orders.placeOrder"
+			byUser="keen" byAddress="85.10.25.12" byGeo="DE" />
+	</track>
+</order>
