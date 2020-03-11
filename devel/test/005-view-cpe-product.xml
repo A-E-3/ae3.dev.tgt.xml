@@ -21,7 +21,7 @@
 		<field name="lastModified" title="Last Modified" type="date"
 			variant="date" />
 		<field name="partNumber" title="Part Number" />
-		<field name="ndmHwId" title="NDM HW ID" />
+		<field name="ndmHwId" title="XTM HW ID" />
 		<field name="stage" title="Product Stage" variant="select">
 			<option value="draft" icon="comment_edit"
 				title="Draft / Planned (not ready for manufacturing)" />
@@ -34,17 +34,17 @@
 		</field>
 		<field name="deviceType" title="Product Generation"
 			variant="select">
-			<option value="0" title="E0, Not NDM Systems License" />
+			<option value="0" title="E0, Not XTM License" />
 			<option value="1"
-				title="E1, NDM Systems License, not NDSS upgradable" />
+				title="E1, XTM Systems License, not upgradable" />
 			<option value="2"
-				title="E2, NDM Systems License, NDSS upgradable" />
+				title="E2, XTM Systems License, upgradable" />
 			<option value="3"
-				title="E3, NDM Systems License, Web-API over SSL" />
+				title="E3, XTM Systems License, Web-API over SSL" />
 			<option value="4"
-				title="E4, NDM Systems License, Secure Authentication" />
+				title="E4, XTM Systems License, Secure Authentication" />
 		</field>
-		<field name="ndmFwId" title="NDM FW ID" />
+		<field name="ndmFwId" title="XTM FW ID" />
 		<field name="cookieString" title="Vendor's Cookie" />
 		<field name="ndssId" title="Default NDSS ID" />
 		<field name="macCount" title="MAC Count" />
