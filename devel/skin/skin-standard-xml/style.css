@@ -697,7 +697,7 @@ SPAN.ui-fldbox-compact:hover, SPAN.ui-fldbox-compact:focus {
 }
 
 DIV.ui-cmd-icon{
-	margin-top: 0.2em; 
+	margin-top: 0.2em;
 	vertical-align: middle;
 	float: left;
 	height: 1.1em;
@@ -905,6 +905,9 @@ IMG.ui-illustration, DIV.ui-illustration, DIV.ui-illustration-central{
 IMG.ui-small{
 	zoom:0.5;
 }
+IMG.ui-medium{
+	zoom:0.67;
+}
 @-moz-document url-prefix() {
 	IMG.ui-small{
 		max-width: 50%;
@@ -917,6 +920,12 @@ DIV.ui-small{
 	transform: scale(0.9);
 	font-size: 90%; 
 }
+DIV.ui-medium{
+	width: 77%;
+	zoom: 0.96; 
+	transform: scale(0.96);
+	font-size: 96%; 
+}
 DIV.ui-illustration-central{
 	margin: 3pt auto 1em auto; 
 	padding:3pt; 
@@ -928,8 +937,14 @@ DIV.ui-illustration-central{
 	IMG.ui-small{
 		zoom:0.75;
 	}
+	IMG.ui-medium{
+		zoom:0.85;
+	}
 	DIV.ui-small{
 		width: 80%;
+	}
+	DIV.ui-medium{
+		width: 87%;
 	}
 }
 
